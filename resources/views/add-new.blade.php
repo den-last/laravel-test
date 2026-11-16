@@ -18,25 +18,69 @@
 <body class="flex-col">
     <header class="header">
         <div class="_container">
-            <a href="{{ route('notes.index') }}" class="logo" >Notes</a>
+            <a href="{{ route('notes.index') }}" class="logo">Notes</a>
         </div>
 
     </header>
 
-    
+
     <main>
         <div class="_container">
-            
+
             <h1>Добавить новую</h1>
             <div class="app-wrap _flex">
                 <div class="notes _flex-col">
+                    @if (session('success'))
+                    <div class="alert alert-success">
+                        <h2>{{ session('success') }}</h2>
+                    </div>
+                    @endif
 
-                    
 
                 </div>
                 <div class="workspace">
                     <div class="single-note _flex-col">
-                        1111
+                        <form action="{{ route('notes.store') }}" method="POST">
+                            @csrf
+                            <div>
+                                <label>Содержание</label>
+                                <textarea name="content">{{ old('content') }}</textarea>
+                                @error('content')
+                                <div>{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div>
+                                <label>Источник</label>
+                                <input type="text" name="source" value="{{ old('source') }}">
+                                @error('source')
+                                <div>{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div>
+                                <label>Книга</label>
+                                <input type="text" name="book" value="{{ old('book') }}">
+                                @error('book')
+                                <div>{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div>
+                                <label>Глава</label>
+                                <input type="text" name="chapter" value="{{ old('chapter') }}">
+                                @error('chapter')
+                                <div>{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div>
+                                <label>Стих</label>
+                                <input type="text" name="verse" value="{{ old('verse') }}">
+                                @error('verse')
+                                <div>{{ $message }}</div>
+                                @enderror
+                            </div>
+
+
+                            <button type="submit" class="watch">Создать</button>
+                        </form>
                     </div>
                 </div>
             </div>

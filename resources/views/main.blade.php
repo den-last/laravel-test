@@ -25,7 +25,8 @@
     <main>
         <div class="_container">
             <h1>Все заметки</h1>
-            <a href="{{ route('notes.create') }}" class="watch">Добавить новую</a>
+            <a href="{{ route('notes.create') }}" class="watch">Добавить новую заметку</a>
+            <a href="{{ route('notes.create') }}" class="watch">Добавить новый тег</a>
             <div class="app-wrap _flex">
                 <div class="notes _flex-col">
 
